@@ -21,16 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".features.superhero.presentation.SuperHeroActivity"
-            android:exported="true"
-            android:theme="@style/Theme.DAM2" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".features.movies.presentation.MovieActivity"
             android:exported="true" >
