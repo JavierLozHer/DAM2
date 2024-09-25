@@ -7,13 +7,15 @@ import edu.iesam.dam2.features.superhero.domain.GetSuperHeroesUseCase
 
 class SuperHeroFactory {
 
+
+    private val superHeroMockRemoteDataSource = SuperHeroMockRemoteDataSource()
+    private val superHeroDataRepository = SuperHeroDataRepository(superHeroMockRemoteDataSource)
+    private val getSuperHeroesUseCase = GetSuperHeroesUseCase(superHeroDataRepository)
+    private val getSuperHeroUseCase = GetSuperHeroUseCase(superHeroDataRepository)
+
+
     fun buildViewModel(): SuperHeroViewModel {
-        return SuperHeroViewModel( GetSuperHeroesUseCase( buildDataRepository() ),
-                GetSuperHeroUseCase( buildDataRepository() )
-        )
+        return SuperHeroViewModel( getSuperHeroesUseCase, getSuperHeroUseCase)
     }
 
-    private fun buildDataRepository(): SuperHeroDataRepository {
-        return SuperHeroDataRepository(  SuperHeroMockRemoteDataSource() )
-    }
 }

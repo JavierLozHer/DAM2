@@ -21,41 +21,37 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun bindData(movies: List<Movie>) {
+        Log.d("@dev", "Peliculas")
         findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
         findViewById<TextView>(R.id.movie_title_1).text = movies[0].title
         findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
-            val movie1: Movie? = viewModel.itemSelected(movies[0].id)
-            movie1?.let {
-                Log.d("@dev", "Pelicula seleccionada: ${it.title}")
-            }
+            movieSelect(movies, 0)
         }
 
         findViewById<TextView>(R.id.movie_id_2).text = movies[1].id
         findViewById<TextView>(R.id.movie_title_2).text = movies[1].title
         findViewById<LinearLayout>(R.id.layout_2).setOnClickListener {
-            val movie1: Movie? = viewModel.itemSelected(movies[1].id)
-            movie1?.let {
-                Log.d("@dev", "Pelicula seleccionada: ${it.title}")
-            }
+            movieSelect(movies, 1)
         }
 
         findViewById<TextView>(R.id.movie_id_3).text = movies[2].id
         findViewById<TextView>(R.id.movie_title_3).text = movies[2].title
         findViewById<LinearLayout>(R.id.layout_3).setOnClickListener {
-            val movie1: Movie? = viewModel.itemSelected(movies[2].id)
-            movie1?.let {
-                Log.d("@dev", "Pelicula seleccionada: ${it.title}")
-            }
+            movieSelect(movies, 2)
         }
 
         findViewById<TextView>(R.id.movie_id_4).text = movies[3].id
         findViewById<TextView>(R.id.movie_title_4).text = movies[3].title
         findViewById<LinearLayout>(R.id.layout_4).setOnClickListener {
-            val movie1: Movie? = viewModel.itemSelected(movies[3].id)
-            movie1?.let {
-                Log.d("@dev", "Pelicula seleccionada: ${it.title}")
-            }
+            movieSelect(movies, 3)
         }
     }
 
+
+    private fun movieSelect(movies: List<Movie>, movieNum: Int) {
+        val movie: Movie? = viewModel.itemSelected(movies[movieNum].id)
+        movie?.let {
+            Log.d("@dev", "Pelicula seleccionada: ${it.title}")
+        }
+    }
 }

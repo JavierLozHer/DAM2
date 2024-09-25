@@ -7,8 +7,13 @@ import edu.iesam.dam2.features.movies.domain.GetMoviesUseCase
 
 class MovieFactory {
 
+    private val movieMockRemoteDataSource = MovieMockRemoteDataSource()
+    private val movieDataRepository = MovieDataRepository(movieMockRemoteDataSource)
+    private val getMoviesUseCase = GetMoviesUseCase(movieDataRepository)
+    private val getMovieUseCase = GetMovieUseCase(movieDataRepository)
+
     fun buildViewModel(): MovieViewModel {
-        return MovieViewModel( GetMoviesUseCase( MovieDataRepository( MovieMockRemoteDataSource() ) ),  GetMovieUseCase( MovieDataRepository( MovieMockRemoteDataSource() ) ) )
+        return MovieViewModel( getMoviesUseCase, getMovieUseCase )
     }
 
 }

@@ -6,7 +6,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import edu.iesam.dam2.R
-import edu.iesam.dam2.features.movies.domain.Movie
 import edu.iesam.dam2.features.superhero.domain.SuperHero
 
 class SuperHeroActivity : AppCompatActivity() {
@@ -24,6 +23,7 @@ class SuperHeroActivity : AppCompatActivity() {
     }
 
     private fun bindData(superHeroes: List<SuperHero>) {
+        Log.d("@dev", "SuperHero")
         findViewById<TextView>(R.id.superHero_id_1).text = superHeroes[0].id
         findViewById<TextView>(R.id.superHero_name_1).text = superHeroes[0].name
         findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
@@ -44,8 +44,8 @@ class SuperHeroActivity : AppCompatActivity() {
     }
 
     private fun superHeroSelect(superHeroes: List<SuperHero>, superHeroNum: Int) {
-        val superHero1: SuperHero? = viewModel.itemSelected(superHeroes[superHeroNum].id)
-        superHero1?.let {
+        val superHero: SuperHero? = viewModel.itemSelected(superHeroes[superHeroNum].id)
+        superHero?.let {
             Log.d("@dev", "Super Heroe seleccionado: ${it.name}")
         }
     }
