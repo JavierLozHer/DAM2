@@ -31,6 +31,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_2"
         android:layout_margin="16dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -51,6 +52,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_3"
         android:layout_margin="16dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -70,6 +72,7 @@
         </TextView>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layout_4"
         android:layout_margin="16dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"

@@ -32,12 +32,30 @@ class MovieActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.movie_id_2).text = movies[1].id
         findViewById<TextView>(R.id.movie_title_2).text = movies[1].title
+        findViewById<LinearLayout>(R.id.layout_2).setOnClickListener {
+            val movie1: Movie? = viewModel.itemSelected(movies[1].id)
+            movie1?.let {
+                Log.d("@dev", "Pelicula seleccionada: ${it.title}")
+            }
+        }
 
         findViewById<TextView>(R.id.movie_id_3).text = movies[2].id
         findViewById<TextView>(R.id.movie_title_3).text = movies[2].title
+        findViewById<LinearLayout>(R.id.layout_3).setOnClickListener {
+            val movie1: Movie? = viewModel.itemSelected(movies[2].id)
+            movie1?.let {
+                Log.d("@dev", "Pelicula seleccionada: ${it.title}")
+            }
+        }
 
         findViewById<TextView>(R.id.movie_id_4).text = movies[3].id
         findViewById<TextView>(R.id.movie_title_4).text = movies[3].title
+        findViewById<LinearLayout>(R.id.layout_4).setOnClickListener {
+            val movie1: Movie? = viewModel.itemSelected(movies[3].id)
+            movie1?.let {
+                Log.d("@dev", "Pelicula seleccionada: ${it.title}")
+            }
+        }
     }
 
 }
