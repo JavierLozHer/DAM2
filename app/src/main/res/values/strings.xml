@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DAM2</string>
     <string name="name_file_xml">movies</string>
+    <string name="name_file_xml_superheroes">superheroes</string>
 </resources>
