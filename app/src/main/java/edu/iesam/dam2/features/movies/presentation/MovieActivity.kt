@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import edu.iesam.dam2.R
+import edu.iesam.dam2.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2.features.movies.domain.Movie
 
 class MovieActivity : AppCompatActivity() {
@@ -18,10 +19,10 @@ class MovieActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val movies = viewModel.viewCreated()
         bindData(movies)
+        testXml()
     }
 
     private fun bindData(movies: List<Movie>) {
-        Log.d("@dev", "Peliculas")
         findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
         findViewById<TextView>(R.id.movie_title_1).text = movies[0].title
         findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
@@ -53,5 +54,17 @@ class MovieActivity : AppCompatActivity() {
         movie?.let {
             Log.d("@dev", "Pelicula seleccionada: ${it.title}")
         }
+    }
+
+    private fun testXml() {
+        val xmlDataSource = MovieXmlLocalDataSource( this )
+        val movie = viewModel.itemSelected("1")
+
+        movie?.let {
+            xmlDataSource.save(it)
+        }
+
+        val movieSaved = xmlDataSource.findMovie()
+        Log.d("@dev", movieSaved.toString())
     }
 }
