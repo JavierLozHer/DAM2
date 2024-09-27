@@ -5,21 +5,28 @@ import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import edu.iesam.dam2.R
 import edu.iesam.dam2.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2.features.movies.domain.Movie
 
 class MovieActivity : AppCompatActivity() {
 
-    private val movieFactory: MovieFactory = MovieFactory()
-    private val viewModel = movieFactory.buildViewModel()
+    private lateinit var movieFactory: MovieFactory
+    private lateinit var viewModel: MovieViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        movieFactory = MovieFactory(this )
+        viewModel = movieFactory.buildViewModel()
+
         val movies = viewModel.viewCreated()
         bindData(movies)
-        testXml()
+        //testXml()
+
+        testListXml()
     }
 
     private fun bindData(movies: List<Movie>) {
@@ -68,5 +75,15 @@ class MovieActivity : AppCompatActivity() {
         Log.d("@dev", movieSaved.toString())
 
         xmlDataSource.delete()
+    }
+
+    private fun testListXml() {
+        val movies = viewModel.viewCreated()
+        val xmlLocalDataSource = MovieXmlLocalDataSource(this )
+
+        xmlLocalDataSource.saveAll(movies)
+
+        val moviesFromXml = xmlLocalDataSource.findAll()
+        Log.d("@dev", moviesFromXml.toString())
     }
 }

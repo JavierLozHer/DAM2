@@ -11,12 +11,15 @@ import edu.iesam.dam2.features.superhero.domain.SuperHero
 
 class SuperHeroActivity : AppCompatActivity() {
 
-    private val superHeroFactory: SuperHeroFactory = SuperHeroFactory()
-    private val viewModel: SuperHeroViewModel = superHeroFactory.buildViewModel()
+    private lateinit var superHeroFactory: SuperHeroFactory
+    private lateinit var viewModel: SuperHeroViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_super_hero2)
+
+        superHeroFactory = SuperHeroFactory(this )
+        viewModel = superHeroFactory.buildViewModel()
 
         val superHeroes = viewModel.viewCreated()
 
