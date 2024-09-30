@@ -1,5 +1,6 @@
 package edu.iesam.dam2.features.movies.data
 
+import android.util.Log
 import edu.iesam.dam2.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2.features.movies.data.remote.MovieMockRemoteDataSource
 import edu.iesam.dam2.features.movies.domain.Movie
@@ -11,7 +12,9 @@ class MovieDataRepository (
 ) : MovieRepository {
 
     override fun getMovies(): List<Movie>{
+        Log.d("@dev", "Llega")
         val movieFromLocal = localXml.findAll()
+        Log.d("@dev", movieFromLocal.toString())
         if (movieFromLocal.isEmpty()) {
             val moviesFromRemote = mockRemoteDataSource.getMovies()
             localXml.saveAll(moviesFromRemote)
@@ -22,14 +25,14 @@ class MovieDataRepository (
     }
 
     override fun getMovie(movieId: String): Movie? {
-        val movieFromLocal = localXml.find()
-        if (movieFromLocal.id != movieId) {
-            val movieFromRemote = mockRemoteDataSource.getMovie(movieId)
-            movieFromRemote?.let { localXml.save(it) }
-            return movieFromRemote
-        } else {
-            return movieFromLocal
+        val localMovie = localXml.findById(movieId)
+        if (localMovie != null) {
+            mockRemoteDataSource.getMovie(movieId)?.let {
+                localXml.save(it)
+                return it
+            }
         }
+        return localMovie
     }
 
 }

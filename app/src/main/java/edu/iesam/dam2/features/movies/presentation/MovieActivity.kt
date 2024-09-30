@@ -24,9 +24,9 @@ class MovieActivity : AppCompatActivity() {
 
         val movies = viewModel.viewCreated()
         bindData(movies)
-        //testXml()
 
-        testListXml()
+        //testListXml()
+        //testMovie()
     }
 
     private fun bindData(movies: List<Movie>) {
@@ -63,20 +63,6 @@ class MovieActivity : AppCompatActivity() {
         }
     }
 
-    private fun testXml() {
-        val xmlDataSource = MovieXmlLocalDataSource( this )
-        val movie = viewModel.itemSelected("1")
-
-        movie?.let {
-            xmlDataSource.save(it)
-        }
-
-        val movieSaved = xmlDataSource.find()
-        Log.d("@dev", movieSaved.toString())
-
-        xmlDataSource.delete()
-    }
-
     private fun testListXml() {
         val movies = viewModel.viewCreated()
         val xmlLocalDataSource = MovieXmlLocalDataSource(this )
@@ -85,5 +71,12 @@ class MovieActivity : AppCompatActivity() {
 
         val moviesFromXml = xmlLocalDataSource.findAll()
         Log.d("@dev", moviesFromXml.toString())
+    }
+
+    private fun testMovie() {
+        val movies = viewModel.viewCreated()
+        val xmlDataSource = MovieXmlLocalDataSource( this)
+        val movie = xmlDataSource.findById("2")
+        Log.d("@dev", movie.toString())
     }
 }
