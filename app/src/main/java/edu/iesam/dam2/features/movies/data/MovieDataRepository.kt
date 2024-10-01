@@ -12,9 +12,7 @@ class MovieDataRepository (
 ) : MovieRepository {
 
     override fun getMovies(): List<Movie>{
-        Log.d("@dev", "Llega")
         val movieFromLocal = localXml.findAll()
-        Log.d("@dev", movieFromLocal.toString())
         if (movieFromLocal.isEmpty()) {
             val moviesFromRemote = mockRemoteDataSource.getMovies()
             localXml.saveAll(moviesFromRemote)

@@ -36,7 +36,6 @@ class MovieXmlLocalDataSource (private val context: Context) {
     fun findAll(): List<Movie> {
         val movies = ArrayList<Movie>()
         val mapMovies = sharedPref.all // as Map<String, String>
-        Log.d("@dev", mapMovies.toString())
         mapMovies.values.forEach { jsonMovie ->
             val movie = gson.fromJson(jsonMovie as String, Movie::class.java)
             movies.add(movie)
