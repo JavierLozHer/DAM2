@@ -1,6 +1,5 @@
 package edu.iesam.dam2.features.movies.data
 
-import android.util.Log
 import edu.iesam.dam2.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2.features.movies.data.remote.MovieMockRemoteDataSource
 import edu.iesam.dam2.features.movies.domain.Movie

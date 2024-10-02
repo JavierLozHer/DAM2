@@ -9,7 +9,7 @@ import edu.iesam.dam2.R
 import edu.iesam.dam2.features.superhero.data.local.SuperHeroXmlLocalDataSource
 import edu.iesam.dam2.features.superhero.domain.SuperHero
 
-class SuperHeroActivity : AppCompatActivity() {
+class SuperHeroesActivity : AppCompatActivity() {
 
     private lateinit var superHeroFactory: SuperHeroFactory
     private lateinit var viewModel: SuperHeroViewModel
@@ -24,7 +24,6 @@ class SuperHeroActivity : AppCompatActivity() {
         val superHeroes = viewModel.viewCreated()
 
         bindData(superHeroes)
-        testXml()
     }
 
     private fun bindData(superHeroes: List<SuperHero>) {
@@ -54,17 +53,5 @@ class SuperHeroActivity : AppCompatActivity() {
         }
     }
 
-    private fun testXml() {
-        val xmlDataSource = SuperHeroXmlLocalDataSource( this )
-        val superHero = viewModel.itemSelected("1")
 
-        superHero?.let {
-            xmlDataSource.save(it)
-        }
-
-        val superHeroXml = xmlDataSource.find()
-        Log.d("@dev", superHeroXml.toString())
-
-        xmlDataSource.delete()
-    }
 }
