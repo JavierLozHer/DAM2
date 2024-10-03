@@ -5,17 +5,12 @@ import edu.iesam.dam2.features.movies.domain.GetMovieUseCase
 import edu.iesam.dam2.features.movies.domain.GetMoviesUseCase
 import edu.iesam.dam2.features.movies.domain.Movie
 
-class MovieViewModel (
-    private val getMoviesUseCase: GetMoviesUseCase,
-    private val getMovieUseCase: GetMovieUseCase
+class MoviesViewModel (
+    private val getMoviesUseCase: GetMoviesUseCase
 ): ViewModel() {
 
     fun viewCreated(): List<Movie> {
         return getMoviesUseCase.invoke()
-    }
-
-    fun itemSelected(id: String): Movie? {
-        return getMovieUseCase.invoke(id)
     }
 
 }
