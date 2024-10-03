@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import edu.iesam.dam2.R
+import edu.iesam.dam2.app.extensions.loadUrl
 import edu.iesam.dam2.features.movies.domain.Movie
 
 class MovieDetailActivity : AppCompatActivity() {
@@ -35,10 +36,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private fun bindData(movie: Movie) {
         val imageView = findViewById<ImageView>(R.id.poster)
-        Glide
-            .with(this)
-            .load(movie.poster)
-            .into(imageView)
+        imageView.loadUrl(movie.poster)
     }
 
     companion object{
