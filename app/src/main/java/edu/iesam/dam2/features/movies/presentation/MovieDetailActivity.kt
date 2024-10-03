@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import edu.iesam.dam2.R
 import edu.iesam.dam2.app.extensions.loadUrl
 import edu.iesam.dam2.features.movies.domain.Movie

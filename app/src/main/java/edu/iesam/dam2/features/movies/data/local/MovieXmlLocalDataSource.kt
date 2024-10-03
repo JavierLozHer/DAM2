@@ -1,7 +1,6 @@
 package edu.iesam.dam2.features.movies.data.local
 
 import android.content.Context
-import android.util.Log
 import com.google.gson.Gson
 import edu.iesam.dam2.R
 import edu.iesam.dam2.features.movies.domain.Movie
