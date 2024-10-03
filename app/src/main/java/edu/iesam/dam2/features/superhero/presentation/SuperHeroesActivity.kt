@@ -14,7 +14,7 @@ class SuperHeroesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_super_hero)
+        setContentView(R.layout.activity_super_heroes)
 
         superHeroFactory = SuperHeroFactory(this )
         viewModel = superHeroFactory.buildViewModel()
