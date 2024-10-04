@@ -24,7 +24,6 @@ class SuperHeroDetailActivity : AppCompatActivity() {
         getSuperHeroId()?.let { superHeroId ->
             viewModel.viewCreated(superHeroId)?.let { superHero ->
                 bindData(superHero)
-
             }
         }
     }

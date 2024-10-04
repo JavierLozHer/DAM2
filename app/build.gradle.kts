@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.gson.serializer)
     implementation(libs.glide)
+    implementation(libs.viewmodel.scope)
 
     //Librerias para test
     testImplementation(libs.junit)

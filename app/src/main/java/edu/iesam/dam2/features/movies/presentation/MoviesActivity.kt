@@ -1,10 +1,13 @@
 package edu.iesam.dam2.features.movies.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import edu.iesam.dam2.R
+import edu.iesam.dam2.app.domain.ErrorApp
 import edu.iesam.dam2.features.movies.domain.Movie
 
 class MoviesActivity : AppCompatActivity() {
@@ -19,9 +22,28 @@ class MoviesActivity : AppCompatActivity() {
         movieFactory = MovieFactory(this)
         viewModel = movieFactory.buildViewModel()
 
-        val movies = viewModel.viewCreated()
-        bindData(movies)
+        setupObserver()
 
+        viewModel.viewCreated()
+
+    }
+
+    private fun setupObserver() {
+        val movieObserver = Observer<MoviesViewModel.UiState> { uiState ->
+            uiState.movies?.let {
+                bindData(it)
+            }
+            uiState.errorApp?.let {
+                //pinto el error
+            }
+            if (uiState.isLoading) {
+                //muestro cargando
+                Log.d("@dev", "Cargando...")
+            } else {
+                //oculto cargando
+            }
+        }
+        viewModel.uiState.observe(this, movieObserver)
     }
 
     private fun bindData(movies: List<Movie>) {
