@@ -33,6 +33,7 @@
             </intent-filter>
 -->
         </activity>
+
         <activity
             android:name=".features.movies.presentation.MoviesActivity"
             android:exported="true">

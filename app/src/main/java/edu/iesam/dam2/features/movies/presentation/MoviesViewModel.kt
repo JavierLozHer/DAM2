@@ -22,7 +22,6 @@ class MoviesViewModel (
         _uiState.postValue(UiState(isLoading = true))
         viewModelScope.launch(Dispatchers.IO) {
             val movies = getMoviesUseCase.invoke()
-            delay(5000)
 
             //postValue origen: Default, IO, Main   Destino: Main
             //value origen/destino: Mismo

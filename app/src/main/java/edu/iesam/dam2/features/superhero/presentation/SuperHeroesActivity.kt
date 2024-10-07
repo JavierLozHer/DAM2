@@ -1,10 +1,13 @@
 package edu.iesam.dam2.features.superhero.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import edu.iesam.dam2.R
+import edu.iesam.dam2.features.movies.presentation.MovieDetailViewModel
 import edu.iesam.dam2.features.superhero.domain.SuperHero
 
 class SuperHeroesActivity : AppCompatActivity() {
@@ -19,9 +22,27 @@ class SuperHeroesActivity : AppCompatActivity() {
         superHeroFactory = SuperHeroFactory(this )
         viewModel = superHeroFactory.buildViewModel()
 
-        val superHeroes = viewModel.viewCreated()
+        setupObserver()
+        viewModel.viewCreated()
 
-        bindData(superHeroes)
+    }
+
+    private fun setupObserver() {
+        val movieObserver = Observer<SuperHeroesViewModel.UiState> { uiState ->
+            uiState.superHeroes?.let {
+                bindData(it)
+            }
+            uiState.errorApp?.let {
+                //pinto el error
+            }
+            if (uiState.isLoading) {
+                //muestro cargando
+                Log.d("@dev", "Cargando...")
+            } else {
+                //oculto cargando
+            }
+        }
+        viewModel.uiState.observe(this, movieObserver)
     }
 
     private fun bindData(superHeroes: List<SuperHero>) {
