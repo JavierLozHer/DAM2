@@ -14,6 +14,8 @@ navigationUiKtx = "2.8.1"
 gson = "2.11.0"
 glide = "4.16.0"
 viewModelScope = "2.8.6"
+navigationComponent = "2.8.2"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -29,8 +31,9 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 gson-serializer = {group = "com.google.code.gson", name="gson", version.ref = "gson"}
 glide = {group = "com.github.bumptech.glide", name="glide", version.ref = "glide"}
 viewmodel-scope = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version = "viewModelScope"}
+nav-ui = { group = "androidx.navigation", name = "navigation-ui", version = "navigationComponent"}
+nav-fragment = { group = "androidx.navigation", name = "navigation-fragment", version = "navigationComponent"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
