@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import edu.iesam.dam2.R
+import edu.iesam.dam2.app.domain.ErrorApp
 import edu.iesam.dam2.databinding.FragmentMoviesBinding
 import edu.iesam.dam2.features.movies.domain.Movie
 
@@ -63,7 +64,7 @@ class MoviesFragment: Fragment() {
         binding.movieId1.text = movies[0].id
         binding.movieTitle1.text = movies[0].title
         binding.layout1.setOnClickListener {
-            findNavController().navigate(R)
+            navigateToMovieDetail(movies[0].id)
         }
 
         binding.movieId2.text = movies[1].id
@@ -82,6 +83,15 @@ class MoviesFragment: Fragment() {
         binding.movieTitle4.text = movies[3].title
         binding.layout4.setOnClickListener {
             navigateToMovieDetail(movies[3].id)
+        }
+    }
+
+    private fun showError(error: ErrorApp) {
+        when (error) {
+            ErrorApp.DataErrorApp -> TODO()
+            ErrorApp.InternetErrorApp -> TODO()
+            ErrorApp.ServerErrorApp -> TODO()
+            ErrorApp.UnknowErrorApp -> TODO()
         }
     }
 

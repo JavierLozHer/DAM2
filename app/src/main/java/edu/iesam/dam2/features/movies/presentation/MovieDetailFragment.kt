@@ -67,10 +67,7 @@ class MovieDetailFragment: Fragment() {
     }
 
     private fun bindData(movie: Movie) {
-        binding.poster
-        findViewById<TextView>(R.id.movie_detail_title).text = movie.title
-        val imageView = findViewById<ImageView>(R.id.poster)
-        imageView.loadUrl(movie.poster)
+        binding.poster.loadUrl(movie.poster)
     }
 
     companion object{
