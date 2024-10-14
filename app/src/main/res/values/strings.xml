@@ -2,4 +2,5 @@
     <string name="app_name">DAM2</string>
     <string name="name_file_xml">movies</string>
     <string name="name_file_xml_superheroes">superheroes</string>
+    <string name="name_file_xml_pokemon">pokemon</string>
 </resources>
