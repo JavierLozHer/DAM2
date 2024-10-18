@@ -26,12 +26,14 @@ class SuperHeroDataRepository(
     override suspend fun getSuperHero(superHeroId: String): SuperHero? {
         val localSuperHero = localXml.findById(superHeroId)
 
-        //if (localSuperHero != null) {
-        //    remoteDataSource.getSuperHero(superHeroId)?.let {
-          //      localXml.save(it)
-            //    return it
-            //}
-        //}
-        return localSuperHero
+        if (localSuperHero == null) {
+            val superHero = remoteDataSource.getSuperHero(superHeroId)
+            localXml.save(superHero)
+            return superHero
+
+        } else {
+            return localSuperHero
+        }
+
     }
 }

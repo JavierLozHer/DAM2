@@ -71,7 +71,7 @@ class SuperHeroListFragment : Fragment() {
             }
 
             superhero2.apply {
-                text = superHeroes[2].name
+                text = superHeroes[1].name
                 setOnClickListener{
                     navigateToDetails(superHeroes[1].id)
                 }

@@ -20,7 +20,7 @@ class SuperHeroApiRemoteDataSource(private val superHeroService: SuperHeroServic
         if (result.isSuccessful) {
             return result.body()!!
         } else {
-            return SuperHero("1", "nombre", "")
+            return SuperHero("error", "", "")
         }
     }
 }

@@ -33,12 +33,14 @@ class SuperHeroDetailFragment: Fragment() {
         viewModel = factory.getSuperHeroDetailViewModel()
         super.onViewCreated(view, savedInstanceState)
 
-        superHeroArgs.superHeroId
+
+        setupObserver()
+        viewModel.loadSuperHero(superHeroArgs.superHeroId)
     }
 
     private fun setupObserver() {
         val observer = Observer<SuperHeroDetailViewModel.UiState> { uiState ->
-
+            uiState
         }
         viewModel.uiState.observe(viewLifecycleOwner, observer)
     }
