@@ -6,7 +6,6 @@ class SuperHeroApiRemoteDataSource(private val superHeroService: SuperHeroServic
 
 
     suspend fun getSuperHeroes(): List<SuperHero> {
-
         val result = superHeroService.requestSuperHeroes()
         if (result.isSuccessful) {
             return result.body()!!
