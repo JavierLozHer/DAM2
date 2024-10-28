@@ -84,7 +84,6 @@ class MoviesFragment: Fragment() {
         binding.layout4.setOnClickListener {
             navigateToMovieDetail(movies[3].id)
         }
-    }
 
     private fun showError(error: ErrorApp) {
         when (error) {

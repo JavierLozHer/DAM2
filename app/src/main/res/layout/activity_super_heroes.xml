@@ -9,6 +9,11 @@
     tools:context=".features.superhero.presentation.SuperHeroActivity">
 
 
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/TitleApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SuperHero Titulo"/>
     <Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

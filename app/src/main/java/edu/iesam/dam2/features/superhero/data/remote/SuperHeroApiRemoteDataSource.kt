@@ -8,7 +8,9 @@ class SuperHeroApiRemoteDataSource(private val superHeroService: SuperHeroServic
     suspend fun getSuperHeroes(): List<SuperHero> {
         val result = superHeroService.requestSuperHeroes()
         if (result.isSuccessful) {
-            return result.body()!!
+            return result.body()!!.map {
+                it.toModel()
+            }
         } else {
             return emptyList()
         }
@@ -17,9 +19,9 @@ class SuperHeroApiRemoteDataSource(private val superHeroService: SuperHeroServic
     suspend fun getSuperHero(superHeroId: String): SuperHero {
         val result = superHeroService.requestSuperHero(superHeroId)
         if (result.isSuccessful) {
-            return result.body()!!
+            return result.body()!!.toModel()
         } else {
-            return SuperHero("error", "", "")
+            return SuperHero("error", "error", "error")
         }
     }
 }
