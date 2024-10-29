@@ -9,3 +9,10 @@ fun ImageView.loadUrl(url: String){
         .load(url)
         .into(this)
 }
+
+/*
+fun ImageView.loadUrlCoil(url: String) {
+    this.load(url)
+}
+
+ */
