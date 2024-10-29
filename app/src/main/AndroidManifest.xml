@@ -15,7 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DAM2"
         tools:targetApi="31">
+        <activity
+            android:name=".features.pokemon.presentation.PokemonDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".features.pokemon.presentation.PokemonActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".features.movies.presentation.MovieDetailActivity"
             android:exported="false" />
@@ -23,24 +34,26 @@
             android:name=".features.superhero.presentation.SuperHeroActivity"
             android:exported="true">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--
+        <intent-filter>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+            -->
         </activity>
-
         <activity
             android:name=".features.movies.presentation.MoviesActivity"
             android:exported="true">
-<!--
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
--->
+            -->
         </activity>
     </application>
 

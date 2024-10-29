@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import edu.iesam.dam2.R
 import edu.iesam.dam2.app.domain.ErrorApp
+import edu.iesam.dam2.app.extensions.loadUrl
 import edu.iesam.dam2.databinding.FragmentMoviesBinding
 import edu.iesam.dam2.features.movies.domain.Movie
 
@@ -35,10 +36,10 @@ class MoviesFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObserver()
+        Log.d("@dev", "moviesFragment")
         movieFactory = MovieFactory(requireContext())
         viewModel = movieFactory.buildViewModel()
-
+        setupObserver()
         viewModel.viewCreated()
     }
 
@@ -61,29 +62,37 @@ class MoviesFragment: Fragment() {
     }
 
     private fun bindData(movies: List<Movie>) {
-        binding.movieId1.text = movies[0].id
-        binding.movieTitle1.text = movies[0].title
-        binding.layout1.setOnClickListener {
-            navigateToMovieDetail(movies[0].id)
-        }
+        binding.apply {
+            superhero1.apply {
+                setOnClickListener {
+                    navigateToMovieDetail(movies[0].id)
+                }
+            }
 
-        binding.movieId2.text = movies[1].id
-        binding.movieTitle2.text = movies[1].title
-        binding.layout2.setOnClickListener {
-            navigateToMovieDetail(movies[1].id)
-        }
+            imgSuperHero1.loadUrl(movies[0].poster)
+            textSuperHero1.text = movies[0].title
 
-        binding.movieId3.text = movies[2].id
-        binding.movieTitle3.text = movies[2].title
-        binding.layout3.setOnClickListener {
-            navigateToMovieDetail(movies[2].id)
-        }
+            superhero2.apply {
+                setOnClickListener{
+                    navigateToMovieDetail(movies[1].id)
+                }
+            }
 
-        binding.movieId4.text = movies[3].id
-        binding.movieTitle4.text = movies[3].title
-        binding.layout4.setOnClickListener {
-            navigateToMovieDetail(movies[3].id)
+            imgSuperHero2.loadUrl(movies[1].poster)
+            textSuperHero2.text = movies[1].title
+
+            superhero3.apply {
+                setOnClickListener{
+                    navigateToMovieDetail(movies[2].id)
+                }
+            }
+
+            imgSuperHero3.loadUrl(movies[2].poster)
+            textSuperHero3.text = movies[2].title
+
+
         }
+    }
 
     private fun showError(error: ErrorApp) {
         when (error) {
@@ -104,4 +113,7 @@ class MoviesFragment: Fragment() {
         _binding = null
     }
 
+
 }
+
+

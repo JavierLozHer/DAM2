@@ -6,12 +6,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.movies.presentation.MoviesActivity">
+    tools:context=".features.pokemon.presentation.PokemonActivity">
 
     <Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="Movies" />
+        android:title="Pokemon" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container"
@@ -19,6 +19,6 @@
         app:defaultNavHost="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:navGraph="@navigation/nav_graph_movie"/>
+        app:navGraph="@navigation/nav_graph_pokemon"/>
 
 </LinearLayout>

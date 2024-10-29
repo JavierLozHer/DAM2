@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import edu.iesam.dam2.app.extensions.loadUrl
 import edu.iesam.dam2.databinding.FragmentSuperheroDetailBinding
+import edu.iesam.dam2.features.superhero.domain.SuperHero
 
 class SuperHeroDetailFragment: Fragment() {
 
@@ -40,8 +42,18 @@ class SuperHeroDetailFragment: Fragment() {
 
     private fun setupObserver() {
         val observer = Observer<SuperHeroDetailViewModel.UiState> { uiState ->
-            uiState
+            uiState.superHero?.let {
+                bindData(it)
+            }
+
         }
         viewModel.uiState.observe(viewLifecycleOwner, observer)
+    }
+
+    fun bindData(superHero: SuperHero) {
+        binding.apply {
+            nameSuperHero.text = superHero.name
+            imageSuperHero.loadUrl(superHero.image)
+        }
     }
 }

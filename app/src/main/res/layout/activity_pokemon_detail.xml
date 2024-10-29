@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.movies.presentation.MovieDetailActivity"
+    tools:context=".features.pokemon.presentation.PokemonDetailActivity"
     android:padding="40dp">
 
 
@@ -28,9 +28,30 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
-        android:id="@+id/sinopsis"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
+        android:id="@+id/type"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/poster"/>
+        android:text="Tipos"
+        app:layout_constraintTop_toBottomOf="@id/poster"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:id="@+id/type1"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/type"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/type2"/>
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:id="@+id/type2"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/type"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/type1"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

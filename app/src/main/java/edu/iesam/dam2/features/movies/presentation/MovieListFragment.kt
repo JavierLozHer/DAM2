@@ -1,4 +1,4 @@
-package edu.iesam.dam2.features.superhero.presentation
+package edu.iesam.dam2.features.movies.presentation
 
 import android.os.Bundle
 import android.util.Log
@@ -10,17 +10,18 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import edu.iesam.dam2.app.extensions.loadUrl
 import edu.iesam.dam2.databinding.FragmentSuperheroListBinding
+import edu.iesam.dam2.features.movies.domain.Movie
 import edu.iesam.dam2.features.superhero.domain.SuperHero
 
-class SuperHeroListFragment : Fragment() {
+class MovieListFragment : Fragment() {
 
     private var _binding: FragmentSuperheroListBinding? = null
     private val binding get() = _binding!!
 
 
 
-    private lateinit var factory: SuperHeroFactory
-    private lateinit var viewModel: SuperHeroListViewModel
+    private lateinit var factory: MovieFactory
+    private lateinit var viewModel: MoviesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,15 +34,28 @@ class SuperHeroListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        factory = SuperHeroFactory(requireContext())
+        factory = MovieFactory(requireContext())
+        viewModel = factory.buildViewModel()
+/*        factory = SuperHeroFactory(requireContext())
         viewModel = factory.getSuperHeroListViewModel()
 
         setupObserver()
         viewModel.loadSuperHeroes()
+        */
+
+        /*
+        val movies = listOf(
+            Movie("1", "title1", "https://es.web.img2.acsta.net/r_1920_1080/img/d4/f5/d4f5d8388a8f5a89126994ca86f7cd96.jpg",""),
+            Movie("2", "title2", "https://es.web.img2.acsta.net/r_1920_1080/img/d4/f5/d4f5d8388a8f5a89126994ca86f7cd96.jpg", ""),
+            Movie("3", "title3", "https://es.web.img2.acsta.net/r_1920_1080/img/d4/f5/d4f5d8388a8f5a89126994ca86f7cd96.jpg", ""))
+
+            bindData(movies)
+
+         */
     }
 
     private fun setupObserver() {
+        /*
         val observer = Observer<SuperHeroListViewModel.UiState>{ uiState ->
             //codigo de respuesta
             uiState.superHeroes?.let { superHeroes ->
@@ -62,9 +76,11 @@ class SuperHeroListFragment : Fragment() {
 
         }
         viewModel.uiState.observe(viewLifecycleOwner, observer)
+
+         */
     }
 
-    private fun bindData(superHeroes: List<SuperHero>) {
+    private fun bindData(superHeroes: List<Movie>) {
         Log.d("@dev", superHeroes.toString())
         binding.apply {
             superhero1.apply {
@@ -73,8 +89,8 @@ class SuperHeroListFragment : Fragment() {
                 }
             }
 
-            imgSuperHero1.loadUrl(superHeroes[0].image)
-            textSuperHero1.text = superHeroes[0].name
+            imgSuperHero1.loadUrl(superHeroes[0].poster)
+            textSuperHero1.text = superHeroes[0].title
 
             superhero2.apply {
                 setOnClickListener{
@@ -82,8 +98,8 @@ class SuperHeroListFragment : Fragment() {
                 }
             }
 
-            imgSuperHero2.loadUrl(superHeroes[1].image)
-            textSuperHero2.text = superHeroes[1].name
+            imgSuperHero2.loadUrl(superHeroes[1].poster)
+            textSuperHero2.text = superHeroes[1].title
 
             superhero3.apply {
                 setOnClickListener{
@@ -91,8 +107,8 @@ class SuperHeroListFragment : Fragment() {
                 }
             }
 
-            imgSuperHero3.loadUrl(superHeroes[2].image)
-            textSuperHero3.text = superHeroes[2].name
+            imgSuperHero3.loadUrl(superHeroes[2].poster)
+            textSuperHero3.text = superHeroes[2].title
 
 
         }
@@ -100,6 +116,6 @@ class SuperHeroListFragment : Fragment() {
     }
 
     private fun navigateToDetails(superHeroId: String) {
-        findNavController().navigate(SuperHeroListFragmentDirections.actionFromSuperheroToSuperheroDetail(superHeroId))
+        //findNavController().navigate(MovieListFragmentDirections.actionFromMovieToMovieDetail(superHeroId))
     }
 }

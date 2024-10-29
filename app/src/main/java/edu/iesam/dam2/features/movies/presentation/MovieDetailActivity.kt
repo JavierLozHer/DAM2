@@ -56,6 +56,10 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun bindData(movie: Movie) {
         val imageView = findViewById<ImageView>(R.id.poster)
         imageView.loadUrl(movie.poster)
+        val textView = findViewById<TextView>(R.id.title)
+        textView.text = movie.title
+        val textViewSinop = findViewById<TextView>(R.id.sinopsis)
+        textViewSinop.text = movie.sinopsis
     }
 
     companion object{
