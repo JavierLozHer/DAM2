@@ -6,6 +6,7 @@ import edu.iesam.dam2.features.superhero.data.remote.SuperHeroMockRemoteDataSour
 import edu.iesam.dam2.features.superhero.domain.SuperHero
 import edu.iesam.dam2.features.superhero.domain.SuperHeroRepository
 
+//@Single
 class SuperHeroDataRepository(
     private val localXml: SuperHeroXmlLocalDataSource,
     private val remoteDataSource: SuperHeroApiRemoteDataSource

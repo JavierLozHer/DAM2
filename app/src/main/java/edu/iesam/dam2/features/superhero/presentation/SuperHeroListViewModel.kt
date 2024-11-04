@@ -10,6 +10,7 @@ import edu.iesam.dam2.features.superhero.domain.SuperHero
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+//@KoinViewModel
 class SuperHeroListViewModel(private val getSuperHeroesUseCase: GetSuperHeroesUseCase) : ViewModel() {
 
     private val _uiState = MutableLiveData<UiState>()

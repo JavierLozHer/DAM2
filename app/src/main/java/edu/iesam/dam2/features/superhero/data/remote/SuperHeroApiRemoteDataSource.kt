@@ -2,8 +2,8 @@ package edu.iesam.dam2.features.superhero.data.remote
 
 import edu.iesam.dam2.features.superhero.domain.SuperHero
 
+//@Single
 class SuperHeroApiRemoteDataSource(private val superHeroService: SuperHeroService) {
-
 
     suspend fun getSuperHeroes(): List<SuperHero> {
         val result = superHeroService.requestSuperHeroes()

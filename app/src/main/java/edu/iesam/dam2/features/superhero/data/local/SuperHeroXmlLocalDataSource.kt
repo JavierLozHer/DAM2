@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import edu.iesam.dam2.R
 import edu.iesam.dam2.features.superhero.domain.SuperHero
 
+//@Single
 class SuperHeroXmlLocalDataSource(private val context: Context) {
 
     private val sharedPref = context.getSharedPreferences(

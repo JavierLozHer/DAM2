@@ -1,22 +1,27 @@
 [versions]
-agp = "8.6.0"
-kotlin = "1.9.0"
-coreKtx = "1.13.1"
+agp = "8.6.1"
+koinCore = "4.0.0"
+kotlin = "2.0.21"
+coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.8.0"
+activity = "1.9.3"
 constraintlayout = "2.1.4"
 navigationFragmentKtx = "2.8.1"
 navigationUiKtx = "2.8.1"
 gson = "2.11.0"
 glide = "4.16.0"
-viewModelScope = "2.8.6"
-navigationComponent = "2.8.2"
+viewModelScope = "2.8.7"
+navigationComponent = "2.8.3"
 retrofit = "2.11.0"
-
+koinBom = "4.0.0"
+koin-annotation = "1.4.0"
+koin-android = "4.0.0"
+kspVersion = "2.0.21-1.0.26"
+koin-ksp = "2.0.21-1.0.26"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,13 +36,20 @@ androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navi
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 gson-serializer = {group = "com.google.code.gson", name="gson", version.ref = "gson"}
 glide = {group = "com.github.bumptech.glide", name="glide", version.ref = "glide"}
-viewmodel-scope = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version = "viewModelScope"}
+viewmodel-scope = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewModelScope"}
 nav-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version = "navigationComponent"}
 nav-fragment = { group = "androidx.navigation", name = "navigation-fragment", version = "navigationComponent"}
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 retrofitConverterGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit"}
 
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom"}
+koin-android = { module = "io.insert-koin:koin-android", version.ref="koin-android"}
+koin-annotation = {module = "io.insert-koin:koin-annotation", version.ref= "koin-annotation"}
+koin-ksp = {group = "io.insert-koin",name = "koin-ksp-compiler", version.ref= "koin-annotation"}
+
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 navigation-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigationComponent"}
+ksp = { id = "com.google.devtools.ksp", version.ref="kspVersion"}

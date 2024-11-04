@@ -17,10 +17,10 @@ class SuperHeroListFragment : Fragment() {
     private var _binding: FragmentSuperheroListBinding? = null
     private val binding get() = _binding!!
 
-
-
     private lateinit var factory: SuperHeroFactory
     private lateinit var viewModel: SuperHeroListViewModel
+
+    // val viewModel : SuperHeroListViewModel by ViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
