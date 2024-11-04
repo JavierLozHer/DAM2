@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import edu.iesam.dam2.app.domain.ErrorApp
 import edu.iesam.dam2.app.extensions.loadUrl
 import edu.iesam.dam2.databinding.FragmentMoviesBinding
@@ -23,6 +24,8 @@ class PokemonsFragment: Fragment() {
     private var _binding: FragmentPokemonsListBinding? = null
     private val binding get() = _binding!!
 
+    private val pokemonAdapter = PokemonAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,7 +38,21 @@ class PokemonsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bindData(PokemonMockRemoteDataSource().getPokemons())
+        binding.apply {
+            list.layoutManager = LinearLayoutManager (
+                requireContext(),
+                LinearLayoutManager.VERTICAL,
+                false
+            )
+
+            list.adapter = pokemonAdapter
+        }
+        bind()
+//        bindData(PokemonMockRemoteDataSource().getPokemons())
+    }
+
+    private fun bind() {
+        pokemonAdapter.setDataList(PokemonMockRemoteDataSource().getPokemons())
     }
 
     private fun setupObserver() {
@@ -60,6 +77,7 @@ class PokemonsFragment: Fragment() {
     }
 
     private fun bindData(movies: List<Pokemon>) {
+        /*
         binding.apply {
             superhero1.apply {
                 setOnClickListener {
@@ -90,6 +108,8 @@ class PokemonsFragment: Fragment() {
 
 
         }
+
+         */
     }
 
     private fun showError(error: ErrorApp) {
@@ -102,7 +122,7 @@ class PokemonsFragment: Fragment() {
     }
 
     private fun navigateToMovieDetail(movieId: String) {
-        startActivity(PokemonDetailActivity.getIntent(requireContext(), movieId))
+        //startActivity(PokemonDetailActivity.getIntent(requireContext(), movieId))
     }
 
 
