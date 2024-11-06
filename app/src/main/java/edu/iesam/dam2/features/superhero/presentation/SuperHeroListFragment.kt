@@ -11,16 +11,14 @@ import androidx.navigation.fragment.findNavController
 import edu.iesam.dam2.app.extensions.loadUrl
 import edu.iesam.dam2.databinding.FragmentSuperheroListBinding
 import edu.iesam.dam2.features.superhero.domain.SuperHero
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SuperHeroListFragment : Fragment() {
 
+    val viewModel : SuperHeroListViewModel by viewModel()
+
     private var _binding: FragmentSuperheroListBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var factory: SuperHeroFactory
-    private lateinit var viewModel: SuperHeroListViewModel
-
-    // val viewModel : SuperHeroListViewModel by ViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,9 +31,6 @@ class SuperHeroListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        factory = SuperHeroFactory(requireContext())
-        viewModel = factory.getSuperHeroListViewModel()
 
         setupObserver()
         viewModel.loadSuperHeroes()

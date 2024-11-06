@@ -7,6 +7,7 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
+loggingInterceptor = "4.12.0"
 material = "1.12.0"
 activity = "1.9.3"
 constraintlayout = "2.1.4"
@@ -17,6 +18,7 @@ glide = "4.16.0"
 viewModelScope = "2.8.7"
 navigationComponent = "2.8.3"
 retrofit = "2.11.0"
+
 koinBom = "4.0.0"
 koin-annotation = "1.4.0"
 koin-android = "4.0.0"
@@ -29,6 +31,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
@@ -43,8 +46,8 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 retrofitConverterGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit"}
 
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom"}
-koin-android = { module = "io.insert-koin:koin-android", version.ref="koin-android"}
-koin-annotation = {module = "io.insert-koin:koin-annotation", version.ref= "koin-annotation"}
+koin-android = { module = "io.insert-koin:koin-android"}
+koin-annotation = {module = "io.insert-koin:koin-annotations", version.ref= "koin-annotation"}
 koin-ksp = {group = "io.insert-koin",name = "koin-ksp-compiler", version.ref= "koin-annotation"}
 
 

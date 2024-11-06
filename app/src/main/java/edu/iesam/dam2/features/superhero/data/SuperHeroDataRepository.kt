@@ -5,11 +5,12 @@ import edu.iesam.dam2.features.superhero.data.remote.SuperHeroApiRemoteDataSourc
 import edu.iesam.dam2.features.superhero.data.remote.SuperHeroMockRemoteDataSource
 import edu.iesam.dam2.features.superhero.domain.SuperHero
 import edu.iesam.dam2.features.superhero.domain.SuperHeroRepository
+import org.koin.core.annotation.Single
 
-//@Single
+@Single
 class SuperHeroDataRepository(
     private val localXml: SuperHeroXmlLocalDataSource,
-    private val remoteDataSource: SuperHeroApiRemoteDataSource
+    private val remoteDataSource: SuperHeroMockRemoteDataSource
 ) : SuperHeroRepository {
 
     override suspend fun getSuperHeroes(): List<SuperHero> {
@@ -29,7 +30,9 @@ class SuperHeroDataRepository(
 
         if (localSuperHero == null) {
             val superHero = remoteDataSource.getSuperHero(superHeroId)
-            localXml.save(superHero)
+            if (superHero != null) {
+                localXml.save(superHero)
+            }
             return superHero
 
         } else {

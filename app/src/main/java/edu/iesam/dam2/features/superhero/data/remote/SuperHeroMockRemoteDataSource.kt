@@ -1,7 +1,9 @@
 package edu.iesam.dam2.features.superhero.data.remote
 
 import edu.iesam.dam2.features.superhero.domain.SuperHero
+import org.koin.core.annotation.Single
 
+@Single
 class SuperHeroMockRemoteDataSource {
 
     private val superHeroes = listOf(

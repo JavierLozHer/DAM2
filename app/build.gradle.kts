@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "edu.iesam.dam2"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "edu.iesam.dam2"
@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.nav.fragment)
     implementation(libs.retrofit)
     implementation(libs.retrofitConverterGson)
+    implementation(libs.logging.interceptor)
 
     //Librerias de DI (Koin)
     implementation(project.dependencies.platform(libs.koin.bom))

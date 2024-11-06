@@ -4,8 +4,9 @@ import android.content.Context
 import com.google.gson.Gson
 import edu.iesam.dam2.R
 import edu.iesam.dam2.features.superhero.domain.SuperHero
+import org.koin.core.annotation.Single
 
-//@Single
+@Single
 class SuperHeroXmlLocalDataSource(private val context: Context) {
 
     private val sharedPref = context.getSharedPreferences(

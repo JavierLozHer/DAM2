@@ -12,7 +12,7 @@ import edu.iesam.dam2.features.superhero.domain.GetSuperHeroesUseCase
 class SuperHeroFactory(private val context: Context) {
 
     private val superHeroXmlLocalDataSource = SuperHeroXmlLocalDataSource(context)
-    private val superHeroDataRepository = SuperHeroDataRepository(superHeroXmlLocalDataSource, getSuperHeroApiRemoteDataSource())
+    private val superHeroDataRepository = SuperHeroDataRepository(superHeroXmlLocalDataSource, SuperHeroMockRemoteDataSource())
     private val getSuperHeroesUseCase = GetSuperHeroesUseCase(superHeroDataRepository)
     private val getSuperHeroUseCase = GetSuperHeroUseCase(superHeroDataRepository)
 
