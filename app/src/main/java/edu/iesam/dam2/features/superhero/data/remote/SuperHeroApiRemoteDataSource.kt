@@ -1,18 +1,21 @@
 package edu.iesam.dam2.features.superhero.data.remote
 
+import edu.iesam.dam2.app.domain.ErrorApp
 import edu.iesam.dam2.features.superhero.domain.SuperHero
-import org.koin.core.annotation.Single
+
 
 class SuperHeroApiRemoteDataSource(private val superHeroService: SuperHeroService) {
 
-    suspend fun getSuperHeroes(): List<SuperHero> {
+    suspend fun getSuperHeroes(): Result<List<SuperHero>> {
         val result = superHeroService.requestSuperHeroes()
         if (result.isSuccessful) {
-            return result.body()!!.map {
+            val superHeroes = result.body()!!.map {
                 it.toModel()
             }
+            return Result.success(superHeroes)
+
         } else {
-            return emptyList()
+            return Result.failure(ErrorApp.ServerErrorApp)
         }
     }
 

@@ -10,18 +10,33 @@ import org.koin.core.annotation.Single
 @Single
 class SuperHeroDataRepository(
     private val localXml: SuperHeroXmlLocalDataSource,
-    private val remoteDataSource: SuperHeroMockRemoteDataSource
+    private val remoteDataSource: SuperHeroApiRemoteDataSource
 ) : SuperHeroRepository {
 
-    override suspend fun getSuperHeroes(): List<SuperHero> {
+    override suspend fun getSuperHeroes(): Result<List<SuperHero>> {
+        return remoteDataSource.getSuperHeroes()
+        /*
         val superHeroFromLocal = localXml.findAll()
         if (superHeroFromLocal.isEmpty()) {
             val superHeroFromRemote = remoteDataSource.getSuperHeroes()
+
+            /*
+            remoteDataSource.getSuperHeroes().fold (
+                {
+                    //success
+                }, {
+                    //failure
+                }
+            )
+             */
+
             localXml.saveAll(superHeroFromRemote)
             return superHeroFromRemote
         } else {
             return superHeroFromLocal
         }
+
+         */
 
     }
 
