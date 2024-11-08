@@ -7,6 +7,7 @@ import edu.iesam.dam2.features.superhero.domain.SuperHero
 class SuperHeroApiRemoteDataSource(private val superHeroService: SuperHeroService) {
 
     suspend fun getSuperHeroes(): Result<List<SuperHero>> {
+        // return apiCall(resourceService.requestResources())
         val result = superHeroService.requestSuperHeroes()
         if (result.isSuccessful) {
             val superHeroes = result.body()!!.map {
