@@ -3,4 +3,9 @@
     <string name="name_file_xml">movies</string>
     <string name="name_file_xml_superheroes">superheroes</string>
     <string name="name_file_xml_pokemon">pokemon</string>
+
+    <string name="title_error_server">Error en el servidor</string>
+    <string name="description_error_server">Error en el servidor descripcion</string>
+    <string name="action_error_retry">Reintentar</string>
+
 </resources>

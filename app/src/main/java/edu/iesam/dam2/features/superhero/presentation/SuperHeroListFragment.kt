@@ -9,13 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import edu.iesam.dam2.app.extensions.loadUrl
+import edu.iesam.dam2.app.presentation.views.ErrorAppUIFactory
+import edu.iesam.dam2.app.presentation.visible
 import edu.iesam.dam2.databinding.FragmentSuperheroListBinding
 import edu.iesam.dam2.features.superhero.domain.SuperHero
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SuperHeroListFragment : Fragment() {
 
-    val viewModel : SuperHeroListViewModel by viewModel()
+    private val viewModel : SuperHeroListViewModel by viewModel()
 
     private var _binding: FragmentSuperheroListBinding? = null
     private val binding get() = _binding!!
@@ -45,8 +47,11 @@ class SuperHeroListFragment : Fragment() {
 
             uiState.errorApp?.let {
                 //pinto error
+                val error = ErrorAppUIFactory(requireContext())
+                val errorAppUI = error.build(it)
+                binding.errorAppView.render(errorAppUI)
             } ?: run {
-                //Ocultar error
+                binding.errorAppView.visible()
             }
 
             if(uiState.isLoading) {

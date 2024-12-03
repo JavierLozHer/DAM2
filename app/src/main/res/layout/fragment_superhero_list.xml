@@ -92,4 +92,9 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <edu.iesam.dam2.app.presentation.views.ErrorAppView
+        android:id="@+id/error_app_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </LinearLayout>
