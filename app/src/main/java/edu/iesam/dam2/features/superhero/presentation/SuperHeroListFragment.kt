@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import edu.iesam.dam2.app.domain.ErrorApp
 import edu.iesam.dam2.app.extensions.loadUrl
 import edu.iesam.dam2.app.presentation.views.ErrorAppUIFactory
 import edu.iesam.dam2.app.presentation.visible
@@ -42,7 +43,7 @@ class SuperHeroListFragment : Fragment() {
         val observer = Observer<SuperHeroListViewModel.UiState>{ uiState ->
             //codigo de respuesta
             uiState.superHeroes?.let { superHeroes ->
-                bindData(superHeroes)
+   //             bindData(superHeroes)
             }
 
             uiState.errorApp?.let {
@@ -53,6 +54,9 @@ class SuperHeroListFragment : Fragment() {
             } ?: run {
                 binding.errorAppView.visible()
             }
+            val error = ErrorAppUIFactory(requireContext())
+            val errorAppUI = error.build(ErrorApp.ServerErrorApp)
+            binding.errorAppView.render(errorAppUI)
 
             if(uiState.isLoading) {
                 //Muestro cargando

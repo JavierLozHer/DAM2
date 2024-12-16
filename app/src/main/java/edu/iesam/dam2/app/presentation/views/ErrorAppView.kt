@@ -12,7 +12,7 @@ class ErrorAppView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
 
-    private val binding = ViewErrorBinding.inflate(LayoutInflater.from(context), this, false)
+    private val binding = ViewErrorBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         hide()
